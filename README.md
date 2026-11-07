@@ -8,6 +8,16 @@ Claudeの使用率（5時間ウィンドウ + 週次）をデスクトップ右�
 > （DPAPI暗号化で）保存します。**自己責任**で、自分のPCでのみ使ってください。
 > 「Refresh session」は `Claude.exe` を強制終了します（作業中のセッションが落ちます）。
 
+## ダウンロード（Windows）
+ビルド済みの exe は [Releases](https://github.com/komuroh/claude-usage-widget/releases/latest) から入手できます。
+
+1. 最新リリースの `ClaudeUsageWidget.exe` をダウンロードして実行（Python不要）
+2. 初回のみウィジェット内の「Refresh session」を押す（Claude Desktop が一度終了・再起動します）
+3. スタートアップに入れる場合は exe のショートカットを `shell:startup` に置く
+
+未署名のため SmartScreen / ウイルス対策ソフトが警告することがあります。気になる場合はリリースノートの SHA256 で
+ファイルを照合するか、下記の手順でソースから自分でビルドしてください。
+
 ## ファイル構成
 - `claude-usage-widget.py` — **本体（346行、単一ファイル）。exe化するのはこれ。**
 - `claude-usage-widget.ps1` — 別方式の旧PowerShell実装（Claude CodeのOAuthトークンを使用、本日のトークン数/概算コストも表示）
