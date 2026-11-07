@@ -148,7 +148,7 @@ def fmt_reset(iso):
     except Exception:
         return ""
 
-# ---------- session refresh: close Desktop -> --save -> relaunch ----------
+# ---------- session refresh: close Desktop -> capture -> relaunch ----------
 CREATE_NO_WINDOW = 0x08000000
 
 def _is_claude_running():
@@ -332,7 +332,7 @@ class Widget:
         except FileNotFoundError:
             self.stat.config(text="No cache. Click 'Refresh session' below.")
         except urllib.error.HTTPError as e:
-            self.stat.config(text="HTTP %s (session expired? rerun --save)" % e.code)
+            self.stat.config(text="HTTP %s (session expired? click Refresh session)" % e.code)
         except Exception as e:
             self.stat.config(text="err: %.40s" % e)
         self.root.after(POLL_MS, self.refresh)

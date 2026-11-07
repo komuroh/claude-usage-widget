@@ -1,28 +1,11 @@
-# claude-usage-widget.exe の作り方
+# exe のビルド手順（Windows）
 
-これはユーザーのWindows機で実行してください（ClaudeのサンドボックスはmacOS/Linuxのため、ここではWindows向けexeをビルドできません）。
+```
+pip install pycryptodome pyinstaller
+pyinstaller ClaudeUsageWidget.spec
+```
+完成物: `dist\ClaudeUsageWidget.exe`（単一exe・コンソール非表示）
 
-## 手順
-
-1. `outputs\outputs` フォルダに移動
-   ```
-   cd "%USERPROFILE%\Downloads\outputs\outputs"
-   ```
-
-2. 依存関係をインストール（一度だけ）
-   ```
-   pip install pycryptodome pyinstaller
-   ```
-
-3. exeをビルド（アイコンなし・コンソール非表示の単一exe）
-   ```
-   pyinstaller --onefile --noconsole --name ClaudeUsageWidget claude-usage-widget.py
-   ```
-
-4. 完成物は `dist\ClaudeUsageWidget.exe`
-
-## 補足
-
-- `get-desktop-session.py` はもう不要です（`claude-usage-widget.py` に処理を統合済み）。exe単体で「使用率表示」「セッション再取得(Refresh session)」「Claude Desktopの終了/再起動」まで完結します。
-- 初回だけ、ウィジェット内の「Refresh session (close & reopen)」ボタンを押してセッションキャッシュを作成してください（`%LOCALAPPDATA%\claude-usage\session.bin`）。
-- スタートアップに登録したい場合は `dist\ClaudeUsageWidget.exe` のショートカットを `shell:startup` フォルダに置いてください。
+- 初回のみ、ウィジェット内の「Refresh session」を押してセッションキャッシュ（`%LOCALAPPDATA%\claude-usage\session.bin`）を作成してください。
+- スタートアップ登録: exe のショートカットを `shell:startup` に置く。
+- ビルド済みexeは [Releases](../../releases) からも入手できます（未署名のため SmartScreen/ウイルス対策ソフトが警告する場合があります）。
