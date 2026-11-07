@@ -1,0 +1,14 @@
+# build output
+dist/
+build/
+__pycache__/
+*.pyc
+
+# secrets / session cache
+session.bin
+*.bin
+
+# internal notes & obsolete scripts (kept locally, not published)
+HANDOFF.md
+conversation-export.md
+get-desktop-session.*
